@@ -1,0 +1,96 @@
+.container{
+    width: 400px;
+    height: 650px;
+    background-color: white;
+    box-shadow: .8px .8px 5px ;
+    position: relative;
+}
+
+.iconContainer{
+    height: 50%;
+    background-color: #2F2721;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.userIcon{
+    width: 8vw;
+}
+
+.cancelIcon{
+    width: 20px;
+   
+}
+
+.cancelBtn{
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: inherit;
+}
+
+.cancelBtn:hover{
+    cursor: pointer;
+}
+
+.emailContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 50px;
+    width: 350px;
+}
+
+.emailText{
+    font-size: 1.4rem;
+    align-self: flex-start;
+    
+}
+
+.emailInput{
+    display: block;
+    border: 2px solid #2F2721 ;
+    margin: auto;
+    font-size: 1.2rem;
+    width: 100%;
+    padding: 8px 10px;
+    text-align: center;
+    border-radius: 2px;
+    color: #E68541;
+    margin-top: 12px;
+}
+
+.emailInput:focus{
+    background-color: #F8F6F4;
+}
+
+.emailInput:focus::placeholder{
+    color: transparent;
+}
+
+.getOtpBtn{
+    display: block;
+    width: 250px;
+    padding: 8px;
+    margin: auto;
+    margin-top: 100px;
+    border: none;
+    border-radius: 20px;
+    background-color: #93D247;
+    font-size: 1.1rem;
+    color: white;
+   
+    
+}
+
+.getOtpBtn:hover:not([disabled]){
+    cursor: pointer;
+    background-color: #71b918;
+}
+

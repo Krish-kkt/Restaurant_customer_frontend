@@ -1,0 +1,42 @@
+.container{
+    background-color: #2F2721;
+    padding: 120px 0 30px 0;
+    
+}
+
+.infoContainer{
+    display: flex;
+    margin: auto;
+    justify-content: center;
+}
+
+.infoContainer > div:not(:last-child){
+    margin-right: 10%;
+}
+
+.seperator{
+    background-color: #443D38;
+    height: 2px;
+    margin-top: 90px;
+    margin-bottom: 30px;
+}
+
+.copyright{
+    color: white;
+    text-align: center;
+     
+}
+
+.highlightTextFooter{
+    color: #E68541;
+}
+
+.footerLink{
+    color: #E68541;
+    text-decoration: none;
+}
+
+.footerLink:hover{
+    color: #c46421;
+    cursor: pointer;
+}

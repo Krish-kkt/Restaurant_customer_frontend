@@ -1,0 +1,256 @@
+.navSection{
+    
+    height: 80vh;
+    position: relative;
+    margin: 0;
+    
+}
+
+.navSection::before{
+    content: '';
+    position:absolute;
+    background-color: #1D1B1E;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -2;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.navSection::after{
+    content: '';
+    position:absolute;
+    animation: backgroundPic 1500ms ease-in;
+    animation-fill-mode: forwards;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.seperatorImg{
+    width: 100%;
+    height: 10px;
+    margin-bottom: 15vh;
+    display: block;
+}
+
+.section2{
+    min-height: 70vh;
+    background-image: url('../../img/background1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.section3{
+    min-height: 70vh;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.section4{
+    padding: 13vh 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-image: url('../../img/background1.png');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}
+
+.section5{
+    height: 65vh;
+    background-image: url('../../img/coffee3.jpg');
+    background-repeat: no-repeat;
+    background-position: center top;
+    margin-top: 100px;
+}
+
+.section2Img{
+    width: 40%;
+    margin-right: 5%;
+   
+}
+
+.section3Img{
+    width: 35%;
+    margin-left: 5%;
+}
+
+.ceterSection4Img{
+    width: 30%;
+}
+
+.section2Content, .section3Content{
+    width: 25%;
+    /* margin-left: 6%; */
+    
+}
+
+.leftSection4, .rightSection4{
+    width:13%;
+}
+
+.leftSection4{
+    margin-right: 5%;
+}
+
+.rightSection4{
+    margin-left: 5%;
+}
+
+.section4Img{
+    display: block;
+    width:100%
+}
+
+
+.heading{
+    color: #2F2721;
+    font-size: 2.5rem;
+    line-height: normal;
+    font-weight: 600;
+}
+
+.underline{
+    width: 5vw;
+    height: 3px;
+    background-color: #E68541;
+    margin: 3vh 0 ;
+}
+
+.description{
+    color: #8D827A;
+}
+
+.leftHeadingSection4, .rightHeadingSection4{
+    font-size: 1.2rem;
+    line-height: normal;
+    font-weight: 600;
+}
+
+.leftHeadingSection4{
+    color:#2F2721 ;
+    margin-top: 50px;
+    
+}
+
+.rightHeadingSection4{
+    color:#E68541 ;
+}
+
+.leftDescriptionSection4, .rightDescriptionSection4{
+    color: #8D827A;;
+}
+
+.rightDescriptionSection4{
+    margin-bottom: 50px;
+}
+
+.leftUnderlineSection4{
+    width: 2vw;
+    height: 3px;
+    background-color: #E68541;
+    margin: 3vh 0 ;
+}
+
+.rightUnderlineSection4{
+    width: 2vw;
+    height: 3px;
+    background-color: #2F2721;
+    margin: 3vh 0 ;
+}
+
+.contentSection5{
+    margin-left: 10%;
+    width: 500px;
+    height: 100% ;
+    overflow: auto;
+    background-color: #F8F6F4;
+    transform: translateY(-50px);
+    padding: 50px;
+    
+}
+
+ul{
+    padding: 0;
+}
+
+li{
+    list-style: none;
+    position: relative;
+    margin: 0 0 26px 0;
+    padding-left: 50px;
+    color: #737E86;
+}
+
+li::before{
+    content: '\2713';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: #2F2721;
+    font-weight: bold;
+
+}
+
+li:not(:last-child)::after{
+    content: '';
+    width: 50px;
+    height: 2px;
+    position:absolute;
+    background-color: #E5E3E1;
+    bottom: -13px;
+    left: 0;
+    
+}
+
+.headingSection5{
+    color: #2F2721;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+
+}
+
+.descriptionSection5{
+    color: #8D827A;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+@keyframes backgroundPic {
+    0%{
+        background-image: url('../../img/home.jpg');
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
+
+    10%{
+        background-image: url('../../img/home.jpg');
+        background-repeat: no-repeat;
+        opacity: 0;
+    }
+
+    100%{
+        background-image: url('../../img/home.jpg');
+        background-repeat: no-repeat;
+        opacity: 1;
+
+    }
+    
+}
+

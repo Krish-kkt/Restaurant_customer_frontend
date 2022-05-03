@@ -1,0 +1,36 @@
+.main{
+    display: flex;
+    position: fixed;
+    top:0;
+    width: 100%;
+    height: 6vh;
+    background-color: rgb(35,27,23,.98);
+    padding-left: 10%;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: 7%;
+    animation: dropOver 300ms linear;
+    z-index: 2;
+}
+
+.img-logo{
+    height: 6vh;
+    object-fit: contain;
+    margin-bottom: 1.5px;
+    overflow: hidden;
+}
+
+.navbarContent{
+    display: flex;
+    align-items: center;
+}
+
+@keyframes dropOver {
+    0%{
+        transform: translateY(-100%);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+}

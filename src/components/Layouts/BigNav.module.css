@@ -1,0 +1,19 @@
+.container{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 7%;
+    padding-left: 10%;
+    
+}
+
+.logoImg{
+    height: 15vh;
+    /* margin-left: 10vw; */
+}
+
+.navContent{
+    display: flex;
+    align-items: center;
+    /* z-index: 5; */
+}
+

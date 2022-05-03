@@ -1,0 +1,74 @@
+.navSection{
+    
+    height: 50vh;
+    position: relative;
+    margin: 0;
+    background-image: url('../../img/menuNavBackground.jpg');
+    background-position: center 0px;
+    
+}
+
+.title{
+    text-align: center;
+    color: white;
+    font-size: 4rem;
+    margin-top: 15vh;
+}
+
+.seperatorImg{
+    width: 100%;
+    height: 10px;
+    margin-bottom: 12vh;
+    display: block;
+}
+
+.heading{
+    font-size: 2.6rem;
+    text-align: center;
+    color: #2F2721;
+}
+
+.seperator{
+    width: 5vw;
+    height: 3px;
+    background-color: #E68541;
+    margin: auto;
+    margin-top: 3vh;
+    margin-bottom: 3vh;
+    padding: 0 30px;
+}
+
+.description{
+    color: #8D827A;
+    text-align: center;
+    padding: 0 30vw;
+}
+
+.categorySection{
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5vw;
+    align-items: center;
+    position: sticky;
+    top: 6vh;
+    padding: 30px;
+    z-index: 2;
+    background-color: white;
+}
+
+.selectCategory{
+    color: #2F2721;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.categoryInput{
+    margin-left: 10px;
+    width: 15vw;
+    border: 2px solid #2F2721 ;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 3px 10px;
+}
+
+

@@ -1,0 +1,65 @@
+
+.addBtn{
+    padding: 0 15px;
+    font-weight: bold;
+    font-size: 1.1rem;
+    color: white;
+    background-color: #E68541;
+    border: none;
+    border-radius: 20px;
+    letter-spacing: 2.5px;
+    height: 35px;
+}
+
+.addBtn:hover{
+    cursor: pointer;
+    background-color: #c46421;
+}
+
+.editContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.incrementBtn, .decrementBtn{
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: #E68541;
+    color: white;
+    border: none;
+    width: 30px;
+    height: 35px;
+    text-align: center;
+}
+
+.incrementBtn{
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.decrementBtn{
+    border-top-left-radius: 15px ;
+    border-bottom-left-radius: 15px;
+}
+
+.incrementBtn:hover, .decrementBtn:hover{
+    cursor: pointer;
+    background-color: #c46421;
+    
+}
+
+.cntContainer{
+    color: #2F2721;
+    font-weight: bold;
+    width: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 8px;
+    height: 35px;
+    border-top: 2px solid #E5E3E1;
+    border-bottom: 2px solid #E5E3E1;
+    letter-spacing: 2.5px;
+    
+}

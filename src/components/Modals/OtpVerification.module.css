@@ -1,0 +1,124 @@
+.container{
+    width: 400px;
+    height: 650px;
+    background-color: white;
+    box-shadow: .8px .8px 5px ;
+    position: relative;
+    animation: appear 300ms ease-out forwards;
+}
+
+.iconContainer{
+    height: 30%;
+    background-color:  #2F2721;
+    font-size: 1.3rem;
+    text-align: center;
+    padding: 15px;
+    color: #F8F6F4;
+    position: relative;
+}
+
+.cancelBtn{
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 20px;
+    background-color: inherit;
+}
+
+.cancelBtn:hover{
+    cursor: pointer;
+}
+
+.emailIcon{
+    width: 180px;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(50%);
+    
+}
+
+.msg{
+    margin-top: 110px;
+    text-align: center;
+}
+
+.otpContainer{
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 40px;
+}
+
+.otpInput{
+    width: 50px;
+    height: 50px;
+    border: 1px solid #2F2721;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    padding: 5px 5px;
+    text-align: center;
+}
+
+.otpInput:focus{
+    background-color: #F8F6F4;
+}
+
+.verifyContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+}
+
+.verifyBtn{
+    font-size: 1.5rem;
+    width: 250px;
+    background-color:#93D247 ;
+    border: none ;
+    padding: 8px;
+    border-radius: 20px;
+    color: white;
+}
+
+.verifyBtn:hover{
+    cursor: pointer;
+    background-color:  #71b918;
+}
+
+.resend{
+    font-size: .8rem;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.resendLink{
+    margin: 0;
+    padding: 0%;
+    background-color: inherit;
+    border: none;
+    font-size: .8rem;
+    text-decoration: underline;
+    color: #E68541;
+}
+
+.resendLink:hover{
+    cursor: pointer;
+    color: #c46421;
+}
+
+.timer{
+    color: red;
+}
+
+@keyframes appear {
+    0%{
+        transform: translateX(300px);
+    }
+
+    100%{
+        transform: translateX(0);
+        
+    }
+    
+}
+
