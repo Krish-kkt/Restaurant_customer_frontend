@@ -5,7 +5,7 @@ import {createSlice, configureStore} from '@reduxjs/toolkit'
 const initialLoginState={
     loggedIn: false,
     mailId: null,
-    userType: null
+    newUser: null
 }
 
 const loginSlice=createSlice({
@@ -15,13 +15,13 @@ const loginSlice=createSlice({
         login(state, action){
             state.loggedIn=true;
             state.mailId=action.payload.mailId;
-            state.userType=action.payload.userType;
+            state.newUser=action.payload.newUser;
         },
 
         logout(state){
             state.loggedIn=false;
             state.mailId=null;
-            state.userType=null;
+            state.newUser=null;
         }
     }
 })
@@ -46,12 +46,14 @@ const modalSlice=createSlice({
         },
 
         notificationOn(state, action){
+            
             state.notificationError=action.payload.error;
             state.notificationMsg=action.payload.msg;
             state.notificationSlider=true;
         },
 
         notificationOff(state, action){
+           
             state.notificationSlider=false;
             state.notificationMsg=null;
         }

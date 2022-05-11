@@ -1,8 +1,26 @@
-import { response } from 'express';
 import classes from './CartItem.module.css';
+import { cartActions } from '../store/store';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 const CartItem =(props)=>{
+
+
+    const dispatch=useDispatch();
+    
+
+    const {_id,title, price} = props;
+    const increment=()=>{
+        const data=[{_id, title, price, cnt:1}];
+        dispatch(cartActions.add(data));
+
+    }
+
+    const decrement=()=>{
+        const data=[{_id, title, price, cnt:-1}];
+        dispatch(cartActions.add(data));
+
+    }
 
     return (
         <div className={classes.container}>
@@ -14,8 +32,8 @@ const CartItem =(props)=>{
                 </div>
             </div>
             <div className={classes.rightSection}>
-                <button className={classes.decreaseBtn}>-</button>
-                <button className={classes.increaseBtn}>+</button>
+                <button onClick={decrement} className={classes.decreaseBtn}>-</button>
+                <button onClick={increment} className={classes.increaseBtn}>+</button>
             </div>
 
         </div>

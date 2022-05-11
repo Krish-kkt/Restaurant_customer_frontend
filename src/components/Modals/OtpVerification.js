@@ -2,13 +2,18 @@ import classes from './OtpVerification.module.css'
 import Background from "./Background";
 import cancelIcon from '../../img/cancelIcon.png'
 import emailSentIcon from '../../img/emailSentIcon.png'
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useState, useCallback } from 'react';
 import countdownConverter from '../../utility/countdownConverter';
+import { useDispatch } from 'react-redux';
+import { modalActions } from '../store/store';
 
 const OtpVerification=(props)=>{
+    // console.log('loaded');
 
     const [timer, setTimer]= useState('02:00');
     const [flag, setFlag]= useState(true);
+    const timeoutFunction = useRef(null);
+    const dispatch = useDispatch();
 
 
     const num1Ref=useRef();
@@ -65,6 +70,36 @@ const OtpVerification=(props)=>{
         }
     },[flag]);
 
+    
+
+    const otpSubmitHandler= async(e)=>{
+        e.preventDefault();
+        const value1=num1Ref.current.value;
+        const value2=num2Ref.current.value;
+        const value3=num3Ref.current.value;
+        const value4=num4Ref.current.value;
+
+        if(!value1 || !value2 || !value3 || !value4){
+
+            if(timeoutFunction.current){
+                clearTimeout(timeoutFunction.current);
+                dispatch(modalActions.notificationOff());
+            }
+
+            setTimeout(()=>{
+                dispatch(modalActions.notificationOn({error: true, msg: 'Invalid OTP!'}));
+            },1)
+
+            timeoutFunction.current= setTimeout(() => {
+                dispatch(modalActions.notificationOff());
+            }, 2500);
+            
+        }else{
+            const otp= value1+value2+value3+value4;
+            
+        }
+    }
+
 
 
     return(
@@ -78,7 +113,7 @@ const OtpVerification=(props)=>{
                 <div className={classes.msg}>
                     Enter the 4 digit code sent to your mail.
                 </div>
-                <form>
+                <form onSubmit={otpSubmitHandler}>
                     <div className={classes.otpContainer}>
                         <input ref={num1Ref} className={classes.otpInput} type='number' maxLength='1' onKeyDown={(e)=> otpHandlerBck(e)} onKeyUp={(e)=> otpHandlerFwd(e, num2Ref)}></input>
                         <input ref={num2Ref} className={classes.otpInput} type='number' maxLength='1' onKeyDown={(e)=> otpHandlerBck(e,num1Ref)} onKeyUp={(e)=> otpHandlerFwd(e, num3Ref)}></input>
@@ -86,7 +121,7 @@ const OtpVerification=(props)=>{
                         <input ref={num4Ref} className={classes.otpInput} type='number' maxLength='1' onKeyDown={(e)=> otpHandlerBck(e,num3Ref)} onKeyUp={(e)=> otpHandlerFwd(e)}></input>
                     </div>
                     <div className={classes.verifyContainer}>
-                        <button type='submit'  className={classes.verifyBtn}>VERIFY</button>
+                        <button type='submit' className={classes.verifyBtn}>VERIFY</button>
                     </div>
                     <div className={classes.resend}>Didn't get the code? <button ref={resendRef} type='button' className={classes.resendLink}  onClick={resendHandler}>Resend</button> <span className={classes.timer} >{timer}</span> </div>
                 </form>

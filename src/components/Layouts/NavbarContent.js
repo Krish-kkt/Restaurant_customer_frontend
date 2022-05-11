@@ -10,6 +10,7 @@ import OtpVerification from "../Modals/OtpVerification";
 const NavbarContent=(props)=>{
 
     const cnt= useSelector(state=> state.cart.totalCnt);
+    const loggedIn= useSelector(state=> state.auth.loggedIn);
 
     const [emailInput, setEmailInput]=useState(false);
     const [otpInput, setOtpInput]=useState(false);
@@ -39,7 +40,11 @@ const NavbarContent=(props)=>{
             })}
 
             <div className={classes.content}><CartButton cnt={cnt} /></div>
-            <button onClick={enableEmailInput} className={classes.loginBtn}>LOGIN / SIGNUP</button>
+            {!loggedIn && <button onClick={enableEmailInput} className={classes.loginBtn}>LOGIN / SIGNUP</button>}
+            {loggedIn && <div className={classes.logoutContainer}>
+                <button className={classes.logoutBtn}>Logout</button>
+                {/* <div className={classes.mail}>{'krishnaajob@gmail.com'}</div> */}
+            </div>}
         </Fragment>
     )
 }

@@ -5,6 +5,7 @@ import cancelIcon from '../../img/cancelIcon.png'
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { modalActions } from "../store/store";
+import fetchRequest from "../../utility/fetchRequest";
 
 const EmailInput=(props)=>{
 
@@ -13,7 +14,7 @@ const EmailInput=(props)=>{
     const emailRef=useRef();
     const submitBtnRef=useRef();
 
-    const submitHandler=(e)=>{
+    const submitHandler= async(e)=>{
         e.preventDefault();
         const validRegex = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
         if(!emailRef.current.value.match(validRegex)){
@@ -26,7 +27,22 @@ const EmailInput=(props)=>{
             }, 2500);
             
         }else{
-            props.emailSubmitHandler(emailRef.current.value);
+
+            const data={mail:emailRef.current.value};
+            dispatch(modalActions.spinnerOn());
+            const [resStatus, response]= await fetchRequest('/login/user', 'POST', data);
+            dispatch(modalActions.spinnerOff());
+            if(resStatus!==200){
+                dispatch(modalActions.notificationOn({error:true, msg:response.Error}));
+                setTimeout(()=>{
+                    dispatch(modalActions.notificationOff());
+                    // submitBtnRef.current.disabled=false;
+                }, 2500);
+            }else{
+                props.emailSubmitHandler(emailRef.current.value);
+            }
+
+            
         }
     }
 

@@ -10,6 +10,7 @@
     font-size: .9rem;
     font-weight: bold;
     color: #E68541;
+    min-width: 45px;
 }
 
 .cnt{
@@ -29,12 +30,13 @@
     justify-content: space-between;
     align-items: center;
     /* border-bottom: 2px solid #E68541 ; */
-    padding: 0px 0px 25px 0px;
+    padding: 0px 0px 30px 0px;
 }
 
 .lowerSection{
     display: flex;
     align-items: center;
+    margin-top: 5px;
 }
 
 .decreaseBtn, .increaseBtn{
@@ -43,9 +45,9 @@
     color: #2F2721;
     font-weight: bold;
     /* padding: 2px 12px; */
-    width: 35px;
+    width: 40px;
     background-color: white;
-    border: 1px solid #E68541 ;
+    border: 2px solid #E68541 ;
     border-radius: 4px;
 }
 

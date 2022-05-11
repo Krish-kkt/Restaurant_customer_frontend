@@ -2,12 +2,12 @@ import {Fragment, useEffect, useState, } from 'react';
 import {Route, Switch, Redirect} from 'react-router-dom';
 import HomePage from './components/Pages/HomePage';
 import MenuPage from './components/Pages/MenuPage';
-// import CartPage from './components/Pages/CartPage';
+import CartPage from './components/Pages/CartPage';
 import useInitialRequest from './hooks/initial-request';
 import LoadingSpinner from './components/Modals/LoadingSpinner';
 import ReactDOM from 'react-dom';
 import {useSelector, useDispatch} from 'react-redux';
-import {authActions, modalActions} from './components/store/store';
+import {authActions, modalActions, cartActions} from './components/store/store';
 import NotificationSlider from './components/Modals/NotificationSlider';
  
 function App() {
@@ -25,14 +25,15 @@ function App() {
 
     const [menuResStatus, menuResponse]= useInitialRequest('/menu');
     const [categoryResStatus, categoryResponse]= useInitialRequest('/category');
+    const [liveResStatus, liveResponse] = useInitialRequest('/user'); 
 
 
     if(flag) dispatch(modalActions.spinnerOn());
 
-    if(flag && menuResStatus && categoryResStatus && categoryResponse && menuResponse){
+    if(flag && menuResStatus!==null && categoryResStatus!==null && categoryResponse!==null && menuResponse!==null && liveResponse!==null && liveResStatus!==null){
       dispatch(modalActions.spinnerOff());
       if(menuResStatus===200){
-        setMenus(menuResponse);
+        setMenus(menuResponse.reverse());
       }
 
       if(categoryResStatus===200){
@@ -46,6 +47,11 @@ function App() {
         setTimeout(() => {
           dispatch(modalActions.notificationOff());
         }, 2500);
+      }
+
+      if(liveResStatus===200){
+        dispatch(authActions.login({mailId: liveResponse.user.mail, newUser: liveResponse.newUser}));
+        dispatch(cartActions.add(liveResponse.user.cart));
       }
 
       setFlag(false);
@@ -63,9 +69,9 @@ function App() {
           <Route path='/menu' exact>
             <MenuPage categories={categories} menus={menus} />
           </Route>
-          {/* <Route path='/cart' exact>
+          <Route path='/cart' exact>
             <CartPage />
-          </Route> */}
+          </Route>
           <Route path='*'>
             <Redirect to='/'/>
           </Route>

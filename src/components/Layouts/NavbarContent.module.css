@@ -19,7 +19,7 @@ a.activeContent{
     color:rgb(230, 133, 65);
 }
 
-.loginBtn{
+.loginBtn, .logoutBtn{
     color:#ECEBEB ;
     text-decoration: none;
     font-size: 1rem;
@@ -29,6 +29,20 @@ a.activeContent{
     margin-left: 3rem;
 }
 
-.loginBtn:hover{
+/* .logoutContainer{
+    position: relative;
+} */
+
+.loginBtn:hover, .logoutBtn:hover{
     cursor: pointer;
 }
+
+/* .mail{
+    font-size: .5rem;
+    color: rgb(230, 133, 65);
+    position: absolute;
+    top: 0;
+    left: 100%;
+    top: 8px;
+
+} */
