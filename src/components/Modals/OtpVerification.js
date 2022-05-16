@@ -5,7 +5,10 @@ import emailSentIcon from '../../img/emailSentIcon.png'
 import { useRef, useEffect, useState, useCallback } from 'react';
 import countdownConverter from '../../utility/countdownConverter';
 import { useDispatch } from 'react-redux';
-import { modalActions } from '../store/store';
+import { modalActions, authActions, cartActions } from '../store/store';
+import fetchRequest from '../../utility/fetchRequest';
+import userEvent from '@testing-library/user-event';
+
 
 const OtpVerification=(props)=>{
     // console.log('loaded');
@@ -92,10 +95,35 @@ const OtpVerification=(props)=>{
 
             timeoutFunction.current= setTimeout(() => {
                 dispatch(modalActions.notificationOff());
-            }, 2500);
+            }, 2000);
             
         }else{
             const otp= value1+value2+value3+value4;
+            dispatch(modalActions.spinnerOn());
+            let [resStatus, response]=await fetchRequest('/authenticate/user', 'POST', {otp});
+            
+            if(resStatus!==200){
+                dispatch(modalActions.spinnerOff());
+                dispatch(modalActions.notificationOn({error:true, msg: response.Error}));
+                setTimeout(() => {
+                    dispatch(modalActions.notificationOff());
+                }, 2000);
+            }else{
+                dispatch(modalActions.spinnerOff());
+                dispatch(authActions.login({mailId:response.user.mail, newUser: response.newUser}));
+                const cartItems= JSON.parse(localStorage.getItem('cart_items'));
+                if(cartItems && cartItems.length!==0){
+                    const [cartUpdateResStatus, cartUpdateResponse] = await fetchRequest('/user/cart', 'POST', {cartItems});
+                    [resStatus, response]= await fetchRequest('/user');
+                }
+                
+                // console.log(response.user);
+                dispatch(cartActions.reset());
+                setTimeout(() => {
+                    dispatch(cartActions.addLogin(response.user.cart));
+                }, 1);
+                props.cancelHandler();
+            } 
             
         }
     }

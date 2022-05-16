@@ -3,31 +3,31 @@ import FloatingNav from '../Layouts/FloatingNav';
 import Lottie from 'lottie-react';
 import cartAnimation from '../../animations/emptyCart.json';
 import { useSelector } from 'react-redux';
-import { useEffect, useRef,  } from 'react';
+import React, { useEffect, useRef,  } from 'react';
 import CartItem from '../Layouts/CartItem'
 
 
 const CartPage = ()=>{
 
-    const navOptions=[{title: 'HOME', link:'/'}, {title:'MENU', link:'/menu'}];
+    
     const cnt= useSelector(state => state.cart.totalCnt);
     const cartItems= useSelector(state => state.cart.cartItems);
     const totalAmount= useSelector(state => state.cart.totalAmount);
     const cartAnimationRef= useRef();
 
-    
+    window.onscroll=function() {};
 
-      useEffect(()=>{
+    useEffect(()=>{
           if(cnt===0) cartAnimationRef.current.playSegments([0,80], true)
-      },[])
+    },[])
 
 
 
     return (
         <div>
-            <FloatingNav items={navOptions} />
+            <FloatingNav  />
             
-            {cnt==0 && <div className={classes.emptyCartContainer}>
+            {cnt===0 && <div className={classes.emptyCartContainer}>
                 <Lottie lottieRef={cartAnimationRef} animationData={cartAnimation} loop={false} style={{height: '40vh'}}  />
             </div>}
 
@@ -47,4 +47,4 @@ const CartPage = ()=>{
     )
 }
 
-export default CartPage;
+export default React.memo(CartPage);

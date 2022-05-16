@@ -1,26 +1,32 @@
 import classes from './CartItem.module.css';
 import { cartActions } from '../store/store';
 import { useSelector, useDispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 
 
 const CartItem =(props)=>{
 
 
     const dispatch=useDispatch();
-    
 
     const {_id,title, price} = props;
     const increment=()=>{
         const data=[{_id, title, price, cnt:1}];
         dispatch(cartActions.add(data));
-
     }
 
     const decrement=()=>{
         const data=[{_id, title, price, cnt:-1}];
         dispatch(cartActions.add(data));
-
     }
+
+    // useEffect(()=>{
+    //     if(flag){
+    //         localStorage.setItem("cart_items", JSON.stringify(cartItems));
+    //         console.log('local');
+    //     } 
+    //     setFlag(true);
+    // },[cartItems]);
 
     return (
         <div className={classes.container}>

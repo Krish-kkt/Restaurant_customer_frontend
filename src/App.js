@@ -15,6 +15,8 @@ function App() {
     const [menus, setMenus]=useState([]);
     const [categories, setCategories]=useState([]);
     const [flag, setFlag]= useState(true);
+    const [menuScrollXcoordinate, setMenuScrollXcoordinate]=useState(0);
+    const [menuScrollYcoordinate, setMenuScrollYcoordinate]=useState(0);
 
     const dispatch=useDispatch();
 
@@ -29,6 +31,11 @@ function App() {
 
 
     if(flag) dispatch(modalActions.spinnerOn());
+
+    const setMenuAxis=(x,y)=>{
+      setMenuScrollXcoordinate(x);
+      setMenuScrollYcoordinate(y);
+    }
 
     if(flag && menuResStatus!==null && categoryResStatus!==null && categoryResponse!==null && menuResponse!==null && liveResponse!==null && liveResStatus!==null){
       dispatch(modalActions.spinnerOff());
@@ -51,7 +58,11 @@ function App() {
 
       if(liveResStatus===200){
         dispatch(authActions.login({mailId: liveResponse.user.mail, newUser: liveResponse.newUser}));
-        dispatch(cartActions.add(liveResponse.user.cart));
+        dispatch(cartActions.addLogin(liveResponse.user.cart));
+      }else{
+        const cartItems= JSON.parse(localStorage.getItem('cart_items'));
+        // console.log(cartItems);
+        if(cartItems) dispatch(cartActions.add(cartItems));
       }
 
       setFlag(false);
@@ -67,7 +78,7 @@ function App() {
             <HomePage />
           </Route>
           <Route path='/menu' exact>
-            <MenuPage categories={categories} menus={menus} />
+            <MenuPage categories={categories} menus={menus} setMenuAxis={setMenuAxis} xCoordinate= {menuScrollXcoordinate} yCoordinate={menuScrollYcoordinate}/>
           </Route>
           <Route path='/cart' exact>
             <CartPage />

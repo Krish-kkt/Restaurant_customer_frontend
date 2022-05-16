@@ -7,7 +7,7 @@ const BigNav=(props)=>{
         <div className={classes.container} >
             <img className={classes.logoImg} src={logoImg} alt='Logo Img' />
             <div className={classes.navContent} >
-                <NavbarContent items={props.items}  />
+                <NavbarContent  />
             </div>
             
         </div>

@@ -22,8 +22,8 @@ const Nav=(props)=>{
 
     return (
         <div>
-            {floatingNav && <FloatingNav items={props.navOptions} />}
-            <BigNav items={props.navOptions}  />
+            {floatingNav && <FloatingNav />}
+            <BigNav  />
         </div>
             
         

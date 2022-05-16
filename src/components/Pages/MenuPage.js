@@ -1,29 +1,50 @@
 import classes from './MenuPage.module.css'
 import Nav from '../Layouts/Nav';
-import { useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import seperatorImg from '../../img/seperator.png'
 import Footer from '../Layouts/Footer';
 import MenuList from '../Layouts/MenuList';
+import { useRef } from 'react';
 
 const MenuPage=(props)=>{
 
-    const navOptions=[{title: 'HOME', link:'/'}, {title:'MENU', link:'/menu'}];
+    
+    const scrollXcoordinate= useRef(0);
+    const scrollYcoordinate= useRef(0);
+
     const categories=props.categories;
 
     const menus=props.menus;
 
+    
+
     useEffect(()=>{
-        if (window.scrollY) {
-            window.scroll(0, 0); 
+        
+        
+        window.scroll(props.xCoordinate, props.yCoordinate);
+        window.onscroll = function() {
+            scrollXcoordinate.current=window.scrollX;
+            scrollYcoordinate.current=window.scrollY;
         }
+        
+
+        return ()=>{
+            props.setMenuAxis(scrollXcoordinate.current,scrollYcoordinate.current);
+            window.onscroll=function() {};
+            
+        }
+            
+        
         
         
     },[])
 
+
+
     return (
         <div>
             <div className={classes.navSection}>
-                <Nav navOptions={navOptions} />
+                <Nav />
                 <div className={classes.title}>MENU</div>
             </div>
             <img src={seperatorImg} className={classes.seperatorImg} />
@@ -49,4 +70,4 @@ const MenuPage=(props)=>{
     )
 }
 
-export default MenuPage;
+export default React.memo(MenuPage);

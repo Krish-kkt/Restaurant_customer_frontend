@@ -13,7 +13,7 @@ const FloatingNav = (props)=>{
             <div className={classes.main}>
                 <img className={classes['img-logo']} src={logoImg} alt='Logo Img' /> 
                 <div className={classes.navbarContent}>
-                    <NavbarContent items={props.items}  />
+                    <NavbarContent />
                     
                 </div>
                 

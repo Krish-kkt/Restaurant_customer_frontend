@@ -8,17 +8,16 @@ import coffee2 from '../../img/coffee2.jpg'
 import coffeeCup from '../../img/coffeeCup.png';
 import leftBanner from '../../img/banner1.png';
 import rightBanner from '../../img/banner2.png';
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import Punchline from "../Layouts/PunchLine";
 
  
 const HomePage=(props)=>{
 
-    const navOptions=[{title: 'HOME', link:'/'}, {title:'MENU', link:'/menu'}];
-
-    const [cnt, setCnt]= useState(1);
-
+    
+    // console.log('homepage');
     useEffect(()=>{
+        
         if (window.scrollY) {
             window.scroll(0, 0); 
           }
@@ -27,7 +26,7 @@ const HomePage=(props)=>{
     return (
         <div>
             <div className={classes.navSection}>
-                <Nav navOptions={navOptions} cnt={cnt} />
+                <Nav />
                 <Punchline />
             </div>
             <img src={seperatorImg} className={classes.seperatorImg} />
@@ -100,4 +99,4 @@ const HomePage=(props)=>{
     )
 }
 
-export default HomePage;
+export default React.memo(HomePage);
