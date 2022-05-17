@@ -109,7 +109,7 @@ const OtpVerification=(props)=>{
                     dispatch(modalActions.notificationOff());
                 }, 2000);
             }else{
-                dispatch(modalActions.spinnerOff());
+                
                 dispatch(authActions.login({mailId:response.user.mail, newUser: response.newUser}));
                 const cartItems= JSON.parse(localStorage.getItem('cart_items'));
                 if(cartItems && cartItems.length!==0){
@@ -122,6 +122,7 @@ const OtpVerification=(props)=>{
                 setTimeout(() => {
                     dispatch(cartActions.addLogin(response.user.cart));
                 }, 1);
+                dispatch(modalActions.spinnerOff());
                 props.cancelHandler();
             } 
             
