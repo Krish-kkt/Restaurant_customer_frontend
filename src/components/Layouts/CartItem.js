@@ -8,6 +8,7 @@ const CartItem =(props)=>{
 
 
     const dispatch=useDispatch();
+    const loggedIn=useSelector(state=>state.auth.loggedIn);
 
     const {_id,title, price} = props;
     const increment=()=>{
