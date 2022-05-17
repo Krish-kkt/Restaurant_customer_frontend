@@ -1,5 +1,5 @@
 import classes from './CartItem.module.css';
-import { cartActions } from '../store/store';
+import { cartActions, sendAddRequest } from '../store/store';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 
@@ -12,12 +12,14 @@ const CartItem =(props)=>{
     const {_id,title, price} = props;
     const increment=()=>{
         const data=[{_id, title, price, cnt:1}];
-        dispatch(cartActions.add(data));
+        if(!loggedIn) dispatch(cartActions.add(data));
+        if(loggedIn) dispatch(sendAddRequest(data));
     }
 
     const decrement=()=>{
         const data=[{_id, title, price, cnt:-1}];
-        dispatch(cartActions.add(data));
+        if(!loggedIn) dispatch(cartActions.add(data));
+        if(loggedIn) dispatch(sendAddRequest(data));
     }
 
     // useEffect(()=>{
